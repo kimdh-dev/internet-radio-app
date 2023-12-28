@@ -1,0 +1,66 @@
+{
+	"ytn" : {
+		"name" : "YTN 라디오",
+		"url" : "https://radiolive.ytn.co.kr/radio/_definst_/20211118_fmlive/playlist.m3u8"
+	},
+	"tbsfm" : {
+		"name" : "TBS FM",
+		"url" : "http://58.234.158.60:1935/fmlive/myStream/playlist.m3u8"
+	},
+	"tbnfm" : {
+		"name" : "TBN 경인교통방송",
+		"url" : "http://radio2.tbn.or.kr:1935/gyeongin/myStream/playlist.m3u8"
+	},
+	"ifm" : {
+		"name" : "경인방송 라디오",
+		"url" : "http://vod.itvfm.co.kr:1935/live/aod1/playlist.m3u8"
+	},
+	"ebsfm" : {
+		"name" : "EBS FM",
+		"url" : "https://ebsonair.ebs.co.kr/fmradiofamilypc/familypc1m/playlist.m3u8"
+	},
+	"cbs_music_fm" : {
+		"name" : "CBS 음악FM",
+		"url" : "http://aac.cbs.co.kr/cbs939/_definst_/cbs939.stream/playlist.m3u8"
+	},
+	"cbs_fm" : {
+		"name" : "CBS 표준FM",
+		"url" : "http://aac.cbs.co.kr/cbs981/_definst_/cbs981.stream/playlist.m3u8"
+	},
+	"kbs_cool" : {
+		"name" : "KBS 쿨FM",
+		"url" : "kbs_lib"
+	},
+	"kbs_happy" : {
+		"name" : "KBS 해피FM",
+		"url" : "kbs_lib"
+	},
+	"kbs_classic" : {
+		"name" : "KBS 클래식FM",
+		"url" : "kbs_lib"
+	},
+	"kbs_1radio" : {
+		"name" : "KBS 1라디오",
+		"url" : "kbs_lib"
+	},
+	"kbs_3radio" : {
+		"name" : "KBS 3라디오",
+		"url" : "kbs_lib"
+	},
+	"sbs_power" : {
+		"name" : "SBS 파워FM",
+		"url" : "sbs_lib"
+	},
+	"sbs_love" : {
+		"name" : "SBS 러브FM",
+		"url" : "sbs_lib"
+	},
+	"mbc_fm" : {
+		"name" : "MBC 표준FM",
+		"url" : "mbc_lib"
+	},
+	"mbc_fm4u" : {
+		"name" : "MBC FM4U",
+		"url" : "mbc_lib"
+	}
+}

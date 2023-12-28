@@ -1,0 +1,107 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<script>
+    let ip_list;
+
+    $(document).ready(function () {
+        get_setting();
+
+        $('#btn-save-ip').click(function () {
+            save_ip();
+        });
+
+        $('#btn-search-google').click(function () {
+            search_google();
+        });
+    });
+
+    function get_setting() {
+        const request = $.ajax({
+            url: "/api/get_setting",
+            type: "GET",
+        });
+        request.done(function (data) {
+            const json_data = data;
+            document.getElementById('ipaddr').setAttribute('value', json_data.ip);
+        });
+        request.fail(function (jqXHR, textStatus) {
+            alert("요청 실패 " + textStatus);
+        });
+    }
+
+    function set_ip(ip) {
+        document.getElementById('ipaddr').setAttribute('value', ip_list[ip].ipaddress);
+    }
+
+    function save_ip() {
+        const ip = document.getElementById('ipaddr').value;
+        const request = $.ajax({
+            url: "/api/save_setting",
+            type: "POST",
+            data: { "ip": ip },
+        });
+        request.done(function (data) {
+            alert("ip설정을 완료하였습니다.");
+        });
+        request.fail(function (jqXHR, textStatus) {
+            alert("요청 실패 " + textStatus);
+        });
+    }
+
+    function search_google() {
+        $('.search-list').html('같은 공유기에 연결된 구글캐스트 기기를 검색하고 있습니다.');
+
+        const request = $.ajax({
+            url: "/api/discover_google_speaker",
+            type: "GET",
+        });
+        request.done(function (data) {
+            let html_text = '검색된 목록<div class="mt-2">';
+            ip_list = data;
+            for (var i = 0; i < ip_list.length; i++) {
+                const result_item = `<div class="search-item"><label class="search-name">${ip_list[i].ipaddress} (${ip_list[i].friendly})</label><button type="button" class="btn btn-light ml-3" id="btn-set-ip" onclick="set_ip(${i})">이 ip로 설정</button></div>`;
+                html_text += result_item;
+            }
+            html_text += '</div>';
+            $('.search-list').html(html_text);
+        });
+        request.fail(function (jqXHR, textStatus) {
+            alert("요청 실패 " + textStatus);
+        });
+    }
+</script>
+
+<body>
+    <div class="wrap">
+        <div class="section-nav p-1">
+            <div class="my-nav-item mt-1 ml-3">
+                <a href="/" class="logo">인터넷 라디오</a>
+            </div>
+            <div class="my-nav-item mt-1 ml-3">
+                <a href="/setting.html" class="menu">설정</a>
+            </div>
+        </div>
+        <div class="content mt-4 p-2">
+            <div class="setting-wrap">
+                <label>구글홈 ip 설정</label>
+                <input type="text" class="form-control ml-3" id="ipaddr">
+                <button type="button" class="btn btn-success ml-3 mb-1" id="btn-save-ip">설정 적용</button>
+            </div>
+            <div class="search-wrap mt-4">
+                <button type="button" class="btn btn-primary" id="btn-search-google">구글캐스트 IP 검색</button>
+            </div>
+            <div class="search-list mt-4">
+                IP 검색을 먼저 해주세요.
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
