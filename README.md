@@ -28,6 +28,11 @@
     - ffmpeg
 
 ## 시작하기
+## ffmpeg 준비
+https://www.ffmpeg.org/download.html 에 접속하여 운영체제에 맞는 ffmpeg를 준비합니다.
+
+windows의 경우 프로젝트와 같은 폴더에 ffmpeg.exe를 넣어야 합니다.
+
 ### 실행
 
     npm install
